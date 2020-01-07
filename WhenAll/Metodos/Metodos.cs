@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WhenAll
@@ -57,6 +59,24 @@ namespace WhenAll
                 return JsonConvert.DeserializeObject<List<Pais>>(data);
             }
             return new List<Pais>();
+        }
+
+
+        public static void TareaObtenerPaises(ref ContextoSincronizacion<Pais> contextoSincronizacion, IServicioPais servicioPais)
+        {
+            Console.WriteLine("ContextoSincronizacion----------Consultando: {0}", servicioPais.Nombre);
+            var paises = servicioPais.ObtenerPais();
+            Console.WriteLine("ContextoSincronizacion----------Resultado de paises: {0}", arg0: paises.Count());
+
+            contextoSincronizacion.BloqueoLecturaEscritura.AcquireReaderLock(Timeout.Infinite);
+
+            var tiempoEsperaAgotado = contextoSincronizacion.TiempoEsperaAgotado;
+
+            contextoSincronizacion.BloqueoLecturaEscritura.ReleaseReaderLock();
+
+            if (!tiempoEsperaAgotado)
+                contextoSincronizacion.ColeccionConcurrenteSegura =
+                    contextoSincronizacion.ColeccionConcurrenteSegura.Concat(paises);
         }
     }
 }

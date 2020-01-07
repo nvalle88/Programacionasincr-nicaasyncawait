@@ -44,10 +44,45 @@ namespace WhenAll
             //Console.WriteLine(stopwatch.ElapsedMilliseconds);
 
 
+            //stopwatch.Reset();
+            //stopwatch.Start();
+            //var contextoSincronizacion = Tareas.ContextoSincronizacion(ClaseListaPaises.ListaPaises);
+            //Console.WriteLine("ContextoSincronizacion----------Tital de  paises: {0}", contextoSincronizacion.Count());
+            //stopwatch.Stop();
+            //Console.WriteLine(stopwatch.ElapsedMilliseconds);
+
+            //stopwatch.Reset();
+            //stopwatch.Start();
+            //TaskFactoryClass.EjemploLeerDirectorio();
+            //stopwatch.Stop();
+            //Console.WriteLine(stopwatch.ElapsedMilliseconds);
+
+            //stopwatch.Reset();
+            //stopwatch.Start();
+            //TaskFactoryClass.CancellationToken();
+            //stopwatch.Stop();
+            //Console.WriteLine(stopwatch.ElapsedMilliseconds);
+
             stopwatch.Reset();
             stopwatch.Start();
-            var d=Tareas.ContextoSincronizacion(ClaseListaPaises.ListaPaises);
-            Console.WriteLine("ContextoSincronizacion----------Tital de  paises: {0}", d.Count());
+            var fd= TaskFactoryClass.ContinueWhenAll();
+            foreach (var item in fd)
+            {
+                Console.WriteLine(item.name);
+            }
+           
+            stopwatch.Stop();
+            Console.WriteLine(stopwatch.ElapsedMilliseconds);
+
+
+            stopwatch.Reset();
+            stopwatch.Start();
+            var rfd = TaskFactoryClass.ContinueWhenAll();
+            foreach (var item in rfd)
+            {
+                Console.WriteLine(item.name);
+            }
+
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds);
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WhenAll
 {
-    public static class  Tareas
+    public static class Tareas
     {
         public static void WaitAllMethod(Task[] tasks)
         {
@@ -56,7 +56,7 @@ namespace WhenAll
             };
             Task.WaitAll(
                ListaPaises.Select(ta => Task.Factory.StartNew(
-                       () => TareaObtenerPaises(ref contextoSincronizacion,ta),
+                       () => Metodos.TareaObtenerPaises(ref contextoSincronizacion,ta),
                        CancellationToken.None,
                        TaskCreationOptions.DenyChildAttach,
                        TaskScheduler.Default))
@@ -73,21 +73,6 @@ namespace WhenAll
 
         }
 
-        private static void TareaObtenerPaises(ref ContextoSincronizacion<Pais> contextoSincronizacion,IServicioPais servicioPais)
-        {
-            Console.WriteLine("ContextoSincronizacion----------Consultando: {0}", servicioPais.Nombre);
-            var paises=  servicioPais.ObtenerPais();
-            Console.WriteLine("ContextoSincronizacion----------Resultado de paises: {0}", paises.Count());
-
-            contextoSincronizacion.BloqueoLecturaEscritura.AcquireReaderLock(Timeout.Infinite);
-
-            var tiempoEsperaAgotado = contextoSincronizacion.TiempoEsperaAgotado;
-
-            contextoSincronizacion.BloqueoLecturaEscritura.ReleaseReaderLock();
-
-            if (!tiempoEsperaAgotado)
-                contextoSincronizacion.ColeccionConcurrenteSegura =
-                    contextoSincronizacion.ColeccionConcurrenteSegura.Concat(paises);
-        }
+        
     }
 }

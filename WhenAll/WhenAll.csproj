@@ -46,17 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextoSincronizacion.cs" />
-    <Compile Include="Inicializar.cs" />
+    <Compile Include="ModeloParaContexto\ContextoSincronizacion.cs" />
+    <Compile Include="Init\Inicializar.cs" />
     <Compile Include="ModeloParaContexto\IServicioPais.cs" />
     <Compile Include="ModeloParaContexto\LispaPaises.cs" />
-    <Compile Include="Metodos.cs" />
+    <Compile Include="Metodos\Metodos.cs" />
     <Compile Include="ModeloParaContexto\Pais_1.cs" />
     <Compile Include="ModeloParaContexto\Pais_0.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Clases.cs" />
-    <Compile Include="Tareas.cs" />
+    <Compile Include="ModeloServicios\Clases.cs" />
+    <Compile Include="FTareas\Tareas.cs" />
+    <Compile Include="FTareas\TaskFactoryClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
