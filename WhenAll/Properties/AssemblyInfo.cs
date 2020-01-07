@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Programacion_asincrónica_async_await")]
+[assembly: AssemblyTitle("Task.WhenAll")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Programacion_asincrónica_async_await")]
+[assembly: AssemblyProduct("Task.WhenAll")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("92001a43-cf7c-4cae-ab3c-89266588c920")]
+[assembly: Guid("4f449a24-6b2a-4d9a-8343-5ec7ae856609")]
 
 // Version information for an assembly consists of the following four values:
 //
